@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 from functions import *
+import streamlit.components.v1 as components
 
 # PAGE CONFIGURATION
 # favicon = Image.open("favicon.png")
@@ -13,6 +14,8 @@ st.set_page_config("Streamlit test", None, "wide", "auto",
 
 def main():
     st.title('Streamlit test')
+    st.text("Power BI Report:")
+    components.html(""" <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZDc0ZWNkZGItNmUwYy00MzRlLWJiOTQtZjg3MThmYjA5M2RlIiwidCI6ImU4MDQ3OWI0LTI2ZWQtNGQ2OS1hZWZhLTgwMTk0MDliMDQ1MiJ9" frameborder="0" allowFullScreen="true"></iframe>""", height=1200,)
 
     st.text("Upload a csv file to begin!")
 
