@@ -15,18 +15,23 @@ st.set_page_config("Streamlit test", None, "wide", "auto",
 def main():
     st.title('Streamlit test')
     st.text("Power BI Report Public:")
-    components.html(""" <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZDc0ZWNkZGItNmUwYy00MzRlLWJiOTQtZjg3MThmYjA5M2RlIiwidCI6ImU4MDQ3OWI0LTI2ZWQtNGQ2OS1hZWZhLTgwMTk0MDliMDQ1MiJ9" frameborder="0" allowFullScreen="true"></iframe>""")
+    components.html(""" <iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZDc0ZWNkZGItNmUwYy00MzRlLWJiOTQtZjg3MThmYjA5M2RlIiwidCI6ImU4MDQ3OWI0LTI2ZWQtNGQ2OS1hZWZhLTgwMTk0MDliMDQ1MiJ9" frameborder="0" allowFullScreen="true"></iframe>""", height=600)
 
     st.text("Power BI Report Site or Portal:")
     components.html(""" <iframe title="sales_akkio" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=14c22a69-fc94-478c-8b04-330274f02eec&autoAuth=true&ctid=e80479b4-26ed-4d69-aefa-8019409b0452" frameborder="0" allowFullScreen="true"></iframe>""", height=600)
 
     st.text("Upload a csv file to begin!")
 
+    separators = [';', ',']
+
+    selected_separator = st.selectbox(
+        "Select a separator: ", (separators), key="sb_three")
+
     uploaded_file = st.file_uploader("Choose a .csv file", type=[
         'csv'], accept_multiple_files=False)
 
     if uploaded_file is not None:
-        dataframe = convert_to_dataframe(uploaded_file)
+        dataframe = convert_to_dataframe(uploaded_file, selected_separator)
         file_information = get_file_information(uploaded_file, dataframe)
 
         list_of_attributes = file_information[3]
