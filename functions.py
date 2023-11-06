@@ -4,6 +4,8 @@ import statistics
 
 def convert_to_dataframe(uploaded_file, selected_separator):
     dataframe = pd.read_csv(uploaded_file, sep=selected_separator)
+    dataframe = dataframe.apply(lambda x: x.str.replace(
+        ',', '.') if x.dtype == 'object' else x)
     return dataframe
 
 

@@ -58,8 +58,7 @@ def main():
 
             only_numeric_columns = []
             for column in list_of_attributes:
-                if (dataframe.dtypes[column] == 'float64'):
-                    only_numeric_columns.append(column)
+                only_numeric_columns.append(column)
 
             print(only_numeric_columns)
 
