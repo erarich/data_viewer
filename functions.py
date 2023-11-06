@@ -2,8 +2,8 @@ import pandas as pd
 import statistics
 
 
-def convert_to_dataframe(uploaded_file):
-    dataframe = pd.read_csv(uploaded_file, sep=',')
+def convert_to_dataframe(uploaded_file, selected_separator):
+    dataframe = pd.read_csv(uploaded_file, sep=selected_separator)
     return dataframe
 
 
